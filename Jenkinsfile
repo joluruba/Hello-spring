@@ -7,17 +7,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'construyendo gradle'
-                withGradle {
-                    sh './gradlew assemble'
-                }
+                echo 'construyendo gradle con docker-compose'
+                sh 'docker-compose build'
 
-            }
-            post {
-                success {
-                    echo 'Archivando por proceso correcto'
-                    archiveArtifacts artifacts: 'build/libs/*.jar'
-                }
             }
 
         }
@@ -25,7 +17,8 @@ pipeline {
 
            stage('Deploy') {
             steps {
-                sh 'docker run --rm -p 8084:8084 hellopring:latest java -jar /tmp/Hello-spring-0.0.1-SNAPSHOT.jar'
+                echo 'echo desplegando ejecucion'
+                sh 'docker-compose up -d'
             }
 
         }
