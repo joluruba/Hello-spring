@@ -25,7 +25,7 @@ pipeline {
 
            stage('Deploy') {
             steps {
-                sh 'docker run --rm hellopring:latest java -jar /tmp/Hello-spring-0.0.1-SNAPSHOT.jar'
+                sh 'docker run --rm -p 8080:8080 hellopring:latest java -jar /tmp/Hello-spring-0.0.1-SNAPSHOT.jar'
             }
 
         }
