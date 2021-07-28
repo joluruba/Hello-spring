@@ -18,4 +18,8 @@ class HelloSpringApplication {
     public String hello(@RequestParam(value = "name", defaultValue = "Yusepe :)") String name) {
         return String.format("Ciao %s!", name);
     }
+    @GetMapping("/web")
+    public String hello2(@RequestParam(value = "name", defaultValue = "Yusepe :)") String name) {
+        return String.format("Ciao %s!", name);
+    }
 }
