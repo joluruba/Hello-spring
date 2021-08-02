@@ -9,6 +9,8 @@ pipeline {
             steps {
                 echo 'construyendo gradle con docker-compose'
                 sh 'docker-compose build'
+                junit skipPublishingChecks: true, testResults: '/Hello-spring/build/test-results/test/TEST-com.example.hellospring.HelloSpringApplicationTests.xml
+'
 
             }
 
