@@ -5,11 +5,12 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('test') {
             steps {
-                echo 'construyendo gradle con docker-compose'
-                sh 'docker-compose build'
-                junit skipPublishingChecks: true, testResults: '/var/lib/jenkins/workspace/hello-spring-jenkinsfile/build/test-results/test/TEST-com.example.hellospring.HelloSpringApplicationTests.xml'
+                echo 'construyendo con gradle Test para general el fichero xml con el resultado'
+                sh './gradle test'
+/                sh 'docker-compose build'/
+                junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
 
             }
 
@@ -18,8 +19,8 @@ pipeline {
 
            stage('Deploy') {
             steps {
-                echo 'echo desplegando ejecucion'
-                sh 'docker-compose up -d'
+                echo 'echo desplegando ejecucion que no haremos porque solo queremos test'
+/                sh 'docker-compose up -d'/
             }
 
         }
