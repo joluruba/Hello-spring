@@ -8,7 +8,8 @@ pipeline {
         stage('test') {
             steps {
                 echo 'construyendo con gradle Test para general el fichero xml con el resultado'
-                sh './gradle test'
+                sh './gradlew clean'
+                sh './gradlew test'
                 junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
 
             }
