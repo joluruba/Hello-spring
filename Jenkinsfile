@@ -9,7 +9,6 @@ pipeline {
             steps {
                 echo 'construyendo con gradle Test para general el fichero xml con el resultado'
                 sh './gradle test'
-/                sh 'docker-compose build'/
                 junit skipPublishingChecks: true, testResults: 'build/test-results/test/TEST-*.xml'
 
             }
@@ -20,7 +19,7 @@ pipeline {
            stage('Deploy') {
             steps {
                 echo 'echo desplegando ejecucion que no haremos porque solo queremos test'
-/                sh 'docker-compose up -d'/
+
             }
 
         }
